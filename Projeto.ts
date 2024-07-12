@@ -1,18 +1,18 @@
-import {Freelancer} from "./Freelancer"
+import { Freelancer } from "./Freelancer"
 import { Cliente } from "./Cliente"
 
 export class Projeto {
     private _titulo: string
     private _descricao: string
-    private _freelancer : Freelancer | null
-    private _cliente  : Cliente 
-    private _concluido : boolean
+    private _freelancer: Freelancer | null
+    private _cliente: Cliente
+    private _concluido: boolean
 
-    constructor(titulo: string, descricao: string, freelancer: Freelancer| null, cliente: Cliente) {
+    constructor(titulo: string, descricao: string, freelancer: Freelancer | null, cliente: Cliente) {
         this._titulo = titulo
         this._descricao = descricao
-        this._freelancer = freelancer 
-        this._cliente =  cliente
+        this._freelancer = freelancer
+        this._cliente = cliente
         this._concluido = false
     }
 
@@ -23,16 +23,16 @@ export class Projeto {
     setTitulo(value: string) {
         this._titulo = value
     }
-    
+
     getDescricao(): string {
         return this._descricao
     }
 
-    setDescricao(value: string) {
+    setDescricao(value: string):  void{
         this._descricao = value
     }
 
-    getFreelancer() {
+    getFreelancer()  {
         return this._freelancer
     }
 
@@ -45,7 +45,7 @@ export class Projeto {
     }
 
     setCliente(value: Cliente) {
-        this._cliente = value   
+        this._cliente = value
     }
 
     getConcluido() {
@@ -53,17 +53,17 @@ export class Projeto {
     }
 
 
-    setConcluido(value: boolean) {
+    setConcluido(value: boolean): void {
         this._concluido = value
     }
 
-    concluirProjeto(concluir: boolean): void{
+    concluirProjeto(concluir: boolean): void {
         this._concluido = concluir
         console.log('O projeto foi concluido com sucesso')
     }
 
     isConcluido(): void {
-        if(this._concluido == false) {
+        if (this._concluido == false) {
             console.log('O projeto está em andamento')
         }
         else {
@@ -73,11 +73,14 @@ export class Projeto {
 
     atribuirFreelancer(valor: Freelancer) {
         this._freelancer = valor
+        valor.adicionarProjeto(this)
     }
-    desatribuirFreelancer(valor: Freelancer) {
-       this._freelancer = null
+
+
+    desatribuirFreelancer() {
+        this._freelancer?.removerProjeto(this)
+        this._freelancer = null
     }
 
 }
 
- 

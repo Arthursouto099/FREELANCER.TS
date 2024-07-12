@@ -15,9 +15,10 @@ export class Freelancer extends Pessoa {
         return 'Freelancer'
     }
 
-    adicionarProjeto(valor: Projeto): void {
+    adicionarProjeto(valor: Projeto) {
         this._projetos.push(valor)
-        
+     
+     
     }
 
     removerProjeto(nomeDoProjeto: Projeto): void {
